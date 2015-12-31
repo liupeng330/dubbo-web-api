@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+           xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+           xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+        <context:property-placeholder location="classpath:/verify-flow-dubbo.properties" ignore-unresolvable="true" />
+        <dubbo:application name="heika-test-flow-service-client" />
+        <dubbo:registry id="heika.verify.flow.service.registry" address="${heika.verify.flow.service.address}" />
+
+        <dubbo:reference id="flowService"
+                         interface="com.heika.verify.flow.inerface.IVerifyFlowService" version="1.0.0"
+                         group="${heika.verify.flow.service.group}"
+                         timeout="${heika.verify.service.timeout}"
+                         registry="heika.verify.flow.service.registry"
+                         retries="${heika.verify.flow.service.retries}"
+                         check="false" >
+        </dubbo:reference>
+</beans>
