@@ -23,10 +23,6 @@ public class VerifyFlowController
         System.out.println("**************************");
         System.out.println("DubboControllerForTest regist");
         System.out.println("**************************");
-//        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"applicationConsumer_flowTask.xml"});
-//        context.start();
-//        System.out.println("Start to getBean...");
-//        flowTaskService = (IVerifyFlowService) context.getBean("flowService");
     }
 
     @RequestMapping(value = "/init")
